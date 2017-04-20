@@ -1,2 +1,2 @@
-# VR_Romance_car
+# VR_Romance_Car
 VRロマンスカーのリポジトリ。
