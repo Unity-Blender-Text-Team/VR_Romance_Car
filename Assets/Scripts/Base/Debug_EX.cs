@@ -14,30 +14,31 @@ public class Debug_EX : MonoBehaviour {
 	// ● メンバ変数
 	//--------------------------------------------------------------------
 	public static bool is_view { get; private set; }	// 表示するか？
-	static ArrayList texts = new ArrayList();			// デバッグ設定用の文章
-	static ArrayList view_texts = new ArrayList();		// デバッグ表示用の文章
-	static GUIStyle gui_style = new GUIStyle();			// テキスト描画スタイル
-	static int font_size = 14;
+	static ArrayList texts = new ArrayList();			// デバッグ設定用の文章達
+	static ArrayList view_texts = new ArrayList();		// デバッグ表示用の文章達
+	static GUIStyle gui_style = new GUIStyle();			// 文字描画の体裁
+	static int font_size = 14;							// 文字の大きさ
 	//--------------------------------------------------------------------
 	// ● 追加
+	//	色と文字を追加可能。
 	//--------------------------------------------------------------------
 	public static void add(object o) {
-		texts.Add(o);
+		texts.Add(o);	// 文章達に追加し、一時保存
 	}
 	//--------------------------------------------------------------------
 	// ● 初期化
 	//--------------------------------------------------------------------
 	void Start() {
-		is_view = Debug.isDebugBuild;
+		is_view = Debug.isDebugBuild;	// デバッグ中の時のみ表示
 
-		gui_style.normal.textColor = Color.white;
-		gui_style.fontSize = font_size;
+		gui_style.normal.textColor = Color.white;	// 文字色を白に設定
+		gui_style.fontSize = font_size;				// 文字の大きさを設定
 	}
 	//--------------------------------------------------------------------
 	// ● 更新（遅）
 	//--------------------------------------------------------------------
 	void LateUpdate() {
-		view_texts = new ArrayList(texts);
+		view_texts = new ArrayList(texts);	// 表示文章達に、一時保存文章達をコピー
 		texts.Clear();	// 毎フレーム初期化する
 		
 		// デバッグ表示キーが押された場合、表示フラグを反転
@@ -50,13 +51,16 @@ public class Debug_EX : MonoBehaviour {
 	void OnGUI() {
 		// 表示する場合
 		if (is_view) {
-			Rect rect = new Rect(10, 10, 600, font_size + 5);
+			// 描画する矩形を作成
+			var rect = new Rect(10, 10, 600, font_size + 5);
 
 			// デバック用文章を走査し、全て画面に表示
 			foreach (var text in view_texts) {
+				// 色の場合、色を設定
 				if (text is Color)
 					gui_style.normal.textColor = (Color)text;
 					
+				// 文字の場合、描画
 				else if (text is string) {
 					GUI.Label(rect, (string)text, gui_style);
 					rect.y += font_size + 5;

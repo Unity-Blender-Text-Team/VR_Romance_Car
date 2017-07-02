@@ -13,25 +13,27 @@ public class Scene_Manager : MonoBehaviour {
 	//--------------------------------------------------------------------
 	// ● メンバ変数
 	//--------------------------------------------------------------------
-	int fps;
-	int frame_count;
-	float next_frame_check_second;
+	int fps;						// FPS
+	int frame_count;				// フレーム数
+	float next_frame_check_second;	// 次回のFPS確認秒数
 	//--------------------------------------------------------------------
 	// ● 初期化
 	//--------------------------------------------------------------------
 	protected virtual void Start() {
-		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.lockState = CursorLockMode.Confined;	// マウスをウィンドウ枠内に固定
 	}
 	//--------------------------------------------------------------------
 	// ● 更新
 	//--------------------------------------------------------------------
 	protected virtual void Update() {
-		frame_count++;
+		// FPSを計測
+		frame_count++;	// フレーム数を加算
+		// FPS確認秒数に到達した場合、FPSを更新
 		if (next_frame_check_second < Time.time) {
-			next_frame_check_second = 1 + Time.time;
-			fps = frame_count;
-			frame_count = 0;
+			next_frame_check_second = 1 + Time.time;	// 次回確認秒数を設定
+			fps = frame_count;	// FPSをフレーム数とする
+			frame_count = 0;	// フレーム数をリセット
 		}
-		Debug_EX.add("FPS : " + fps);
+		Debug_EX.add("FPS : " + fps);	// FPSをデバッグ表示
 	}
 }

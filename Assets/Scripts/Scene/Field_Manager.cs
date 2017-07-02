@@ -14,13 +14,14 @@ public class Field_Manager : Scene_Manager {
 	//--------------------------------------------------------------------
 	// ● メンバ変数
 	//--------------------------------------------------------------------
-	float end_second;
+	float end_second;	// ゲームが終了する秒数
 	//--------------------------------------------------------------------
 	// ● 初期化
 	//--------------------------------------------------------------------
 	protected override void Start() {
 		base.Start();
-		end_second = 5 * 60 + Time.time;
+
+		end_second = 5 * 60 + Time.time;	// 5分後に終了を設定
 	}
 	//--------------------------------------------------------------------
 	// ● 更新
@@ -28,9 +29,11 @@ public class Field_Manager : Scene_Manager {
 	protected override void Update() {
 		base.Update();
 
+		// 終了秒に到達したか、BackSpaceボタンが押された場合
 		if ( end_second < Time.time || Input.GetKeyDown(KeyCode.Backspace) )
-			SceneManager.LoadScene("Test_Score");
+			SceneManager.LoadScene("Test_Score");	// テスト場面に遷移
 
+		// 終了までの秒数をデバッグ表示
 		Debug_EX.add( "end_second : " + (end_second - Time.time) );
 	}
 }
