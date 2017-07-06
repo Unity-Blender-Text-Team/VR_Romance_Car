@@ -18,12 +18,12 @@ public class Title_Manager : Scene_Manager {
 	// ● 初期化
 	//--------------------------------------------------------------------
 	protected override void Start() {
-		base.Start();
+		base.Start();	// 基盤の処理を呼ぶ
 	}
 	//--------------------------------------------------------------------
 	// ● 更新
 	//--------------------------------------------------------------------
 	protected override void Update() {
-		base.Update();
+		base.Update();	// 基盤の処理を呼ぶ
 	}
 }

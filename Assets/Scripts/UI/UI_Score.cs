@@ -32,7 +32,7 @@ public class UI_Score : MonoBehaviour {
 	public void on_click(Button button) {
 		switch (button.name) {
 			case "Button_End":
-				SceneManager.LoadScene("Test_Title");
+				SceneManager.LoadScene("Title");
 				break;
 		}
 	}

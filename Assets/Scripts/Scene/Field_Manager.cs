@@ -31,7 +31,7 @@ public class Field_Manager : Scene_Manager {
 
 		// 終了秒に到達したか、BackSpaceボタンが押された場合
 		if ( end_second < Time.time || Input.GetKeyDown(KeyCode.Backspace) )
-			SceneManager.LoadScene("Test_Score");	// テスト場面に遷移
+			SceneManager.LoadScene("Score");	// テスト場面に遷移
 
 		// 終了までの秒数をデバッグ表示
 		Debug_EX.add( "end_second : " + (end_second - Time.time) );

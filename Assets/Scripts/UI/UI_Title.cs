@@ -30,12 +30,16 @@ public class UI_Title : MonoBehaviour {
 	// ● ボタンが押されたコールバック関数
 	//--------------------------------------------------------------------
 	public void on_click(Button button) {
+		// 押されたボタン名で分岐
 		switch (button.name) {
+			// 開始ボタンの場合
 			case "Button_Start":
-				SceneManager.LoadScene("Test_Field");
+				SceneManager.LoadScene("Field");	// フィールド場面に遷移
 				break;
+
+			// 終了ボタンの場合
 			case "Button_End":
-				Application.Quit();
+				Application.Quit();					// アプリ終了
 				break;
 		}
 	}
