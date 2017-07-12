@@ -47,8 +47,10 @@ public class UI_Smartphone : MonoBehaviour {
 	// ● 更新
 	//--------------------------------------------------------------------
 	void Update() {
+/*
 		if ( Input.GetButtonDown("Submit") )
 			set_active(!is_active);
+*/
 
 		if (hidden_take_light_second < Time.time) {
 			hidden_take_light_second = float.PositiveInfinity;
