@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 //========================================================================
 // ■ UI_Title
 //------------------------------------------------------------------------
@@ -15,11 +16,13 @@ public class UI_Title : MonoBehaviour {
 	//--------------------------------------------------------------------
 	// ● メンバ変数
 	//--------------------------------------------------------------------
-
+	Dictionary<string, AudioSource> ses = new Dictionary<string, AudioSource>();
 	//--------------------------------------------------------------------
 	// ● 初期化
 	//--------------------------------------------------------------------
 	void Start() {
+		foreach ( var a in GetComponentsInChildren<AudioSource>() )
+			ses[a.name] = a;
 	}
 	//--------------------------------------------------------------------
 	// ● 更新
@@ -42,5 +45,7 @@ public class UI_Title : MonoBehaviour {
 				Application.Quit();					// アプリ終了
 				break;
 		}
+
+		ses[button.name].Play();
 	}
 }
