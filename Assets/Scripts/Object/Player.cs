@@ -20,6 +20,9 @@ public class Player : MonoBehaviour {
 	// ● 初期化
 	//--------------------------------------------------------------------
 	void Start() {
+		// VRが接続されている場合、非活動状態
+		if (OVRManager.isHmdPresent)	gameObject.SetActive(false);
+
 		controller = GetComponent<CharacterController>();
 		camera = Camera.main.transform;
 	}

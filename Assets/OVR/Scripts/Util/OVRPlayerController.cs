@@ -97,6 +97,9 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Start()
 	{
+		// VR‚ªÚ‘±‚³‚ê‚Ä‚¢‚éê‡A”ñŠˆ“®ó‘Ô
+		if (!OVRManager.isHmdPresent)	gameObject.SetActive(false);
+
 		// Add eye-depth as a camera offset from the player controller
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
